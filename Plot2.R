@@ -3,7 +3,7 @@ library(data.table)
 hpc <- fread("household_power_consumption.txt", header="auto", skip=66637, nrows=2880, sep=";", na.strings="?")
 hpc.col <- as.character(names(fread("household_power_consumption.txt", nrow=1)))
 names(hpc) <- hpc.col
-# Remove missing
+# Remove missing data
 hpc <- na.omit(hpc)
 DateTime <- paste(hpc$Date, hpc$Time, sep=" ")
 hpc$DateTime <- as.POSIXct(DateTime, format="%d/%m/%Y %H:%M:%S")
